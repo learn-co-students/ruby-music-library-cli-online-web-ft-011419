@@ -1,5 +1,5 @@
 class Genre
-attr_accessor :name, :songs
+attr_accessor :name, :songs, :artists
 @@all=[]
     def initialize(name=nil)
       @name = name
@@ -29,8 +29,9 @@ attr_accessor :name, :songs
 
        @songs<< song unless @songs.include?(song)
         end
-
-
+        def artists
+          @songs.map(&:artist).uniq
+        end
 
 
 end

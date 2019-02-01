@@ -20,9 +20,9 @@ attr_accessor :name, :artist ,:genre
       @@all << self
     end
     def self.create(name)
-        song=self.new(name)
-    @@all << song
-    song
+        song = self.new(name)
+        song.save
+        song
     end
         def artist=(artist)
           @artist= artist
@@ -32,6 +32,18 @@ attr_accessor :name, :artist ,:genre
           @genre=genre
           @genre.add_song(self)
         end
+        def self.find_by_name(name)
+        @@all.find {|a|a.name == name}
 
+        end
+        def self.find_or_create_by_name(name)
+      #  if  find_by_name(name)==nil
+      #         src=create(name)
+      #    else
+      #      find_by_name(name)
+      #    end
+          find_by_name(name)|| s=create(name)
+          s.name.uniq if s
+        end
 
 end
