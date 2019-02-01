@@ -1,6 +1,7 @@
 class Genre
 attr_accessor :name, :songs, :artists
 @@all=[]
+extend Concerns::Findable
     def initialize(name=nil)
       @name = name
       @@all << self

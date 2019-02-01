@@ -4,9 +4,9 @@ attr_accessor :name, :artist ,:genre
 @@all=[]
     def initialize(name, artist=nil,genre=nil)
       @name = name
-      @@all << self
+      #@@all << self
 
-      self.artist=(artist)
+      self.artist=(artist)if artist
     self.genre=(genre)if genre
     end
 
@@ -32,18 +32,24 @@ attr_accessor :name, :artist ,:genre
           @genre=genre
           @genre.add_song(self)
         end
-        def self.find_by_name(name)
-        @@all.find {|a|a.name == name}
+       def self.find_by_name(name)
+       @@all.find {|a|a.name == name}
 
         end
-        def self.find_or_create_by_name(name)
-      #  if  find_by_name(name)==nil
-      #         src=create(name)
-      #    else
-      #      find_by_name(name)
-      #    end
-          find_by_name(name)|| s=create(name)
-        #  s.name.uniq if s
+       def self.find_or_create_by_name(name)
+          find_by_name(name)|| create(name)
         end
+    def self.new_from_filename(file_name)
+           arr = file_name.split(" - ")
+
+artist=Artist.find_or_create_by_name(arr[0])
+genre=Genre.find_or_create_by_name(arr[2].gsub(".mp3", ""))
+  song=new(arr[1],artist, genre )
+  song
+    end
+def self.create_from_filename(file_name)
+song=new_from_filename(file_name).save
+song
+end
 
 end
