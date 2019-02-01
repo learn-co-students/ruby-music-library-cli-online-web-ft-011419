@@ -6,6 +6,7 @@ attr_accessor :name ,:songs
       @name = name
       @@all << self
       @songs =[]
+
     end
 
       def self.all
