@@ -43,7 +43,7 @@ attr_accessor :name, :artist ,:genre
       #      find_by_name(name)
       #    end
           find_by_name(name)|| s=create(name)
-          s.name.uniq if s
+        #  s.name.uniq if s
         end
 
 end
