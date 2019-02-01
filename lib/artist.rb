@@ -1,3 +1,4 @@
+require "pry"
 class Artist
 attr_accessor :name ,:songs
 @@all=[]
@@ -23,10 +24,11 @@ attr_accessor :name ,:songs
       art
       end
 
-      def add_song
-        @songs<<self
+      def add_song(song)
+          song.artist || song.artist=self
 
-      end
+       @songs<< song unless @songs.include?(song)
+        end
 
 
 end

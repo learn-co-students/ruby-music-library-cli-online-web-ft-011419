@@ -4,6 +4,7 @@ attr_accessor :name
     def initialize(name=nil)
       @name = name
       @@all << self
+      @songs=[]
     end
 
       def self.all
