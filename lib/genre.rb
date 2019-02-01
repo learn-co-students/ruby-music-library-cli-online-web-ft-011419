@@ -1,5 +1,5 @@
 class Genre
-attr_accessor :name
+attr_accessor :name, :songs
 @@all=[]
     def initialize(name=nil)
       @name = name
@@ -22,6 +22,15 @@ attr_accessor :name
       @@all <<grn
       grn
       end
+
+
+      def add_song(song)
+          song.genre  || song.genre=self
+
+       @songs<< song unless @songs.include?(song)
+        end
+
+
 
 
 end
