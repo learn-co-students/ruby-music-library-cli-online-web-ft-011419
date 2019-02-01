@@ -30,7 +30,5 @@ class Genre
     new(name).tap{|another| another.save}
   end
 
-  def to_s
-    self.name
-  end
+
 end
