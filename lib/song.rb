@@ -15,4 +15,8 @@ class Song
     @@all.clear
   end 
 
+  def self.save 
+    @@all << self 
+  end 
+
 end
