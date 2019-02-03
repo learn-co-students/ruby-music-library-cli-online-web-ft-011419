@@ -17,6 +17,20 @@ class MusicLibraryController
     input = ''
     while input != 'exit'
       input = gets.chomp
+      case input
+        when 'list songs'
+          self.list_songs
+        when 'list artists'
+          self.list_artists
+        when 'list genres'
+          self.list_genres
+        when 'list artist'
+          self.list_songs_by_artist
+        when 'list genre'
+          self.list_songs_by_genre
+        when 'play song'
+          self.play_song
+      end
     end
   end
   def list_songs
@@ -40,6 +54,15 @@ class MusicLibraryController
     input = gets.chomp
     if Genre.find_by_name(input)
       Genre.find_by_name(input).songs.sort_by{|song| song.name}.each_with_index{|song, i| puts "#{i+1}. #{song.artist.name} - #{song.name}"}
+    end
+  end
+  def play_song
+    songs = Song.all.sort_by{|song| song.name}
+    puts "Which song number would you like to play?"
+    input = gets.chomp.to_i
+    song = songs[input-1]
+    if input > 0 && input <= (songs.length + 1) && song.class() == Song
+      puts "Playing #{song.name} by #{song.artist.name}"
     end
   end
 end
