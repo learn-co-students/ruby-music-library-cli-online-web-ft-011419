@@ -19,10 +19,32 @@ end
 
 
     def list_songs
-    Song.all.each_with_index do |a,i|
-      a.name
-    puts "{i}#{a.name}"
+      Song.all.sort_by(&:name).each_with_index do |song,i|
+      puts "#{i+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
+      end
+    end
+    def list_artists
+      Artist.all.sort_by(&:name).each_with_index do |a,i|
+          puts "#{i+1}. #{a.name}"
+      end
+    end
+    def list_genres
+        Genre.all.sort_by(&:name).each_with_index do |g,i|
+          puts "#{i+1}. #{g.name}"
+        end
+    end
+      def list_songs_by_artist
+        puts "Please enter the name of an artist:"
+          input= gets.strip
+          end
+def list_songs_by_genre
+  puts"Please enter the name of a genre:"
+  input= gets.strip
+end
+def play_song
+  puts "Which song number would you like to paly?"
+  input= gets.strip
+end
 
-    end
-    end
+
 end

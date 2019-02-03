@@ -5,7 +5,7 @@ extend Concerns::Findable
 @@all=[]
     def initialize(name=nil)
       @name = name
-      @@all << self
+    #  @@all << self
       @songs =[]
     end
 
@@ -17,7 +17,7 @@ extend Concerns::Findable
       end
       def save
         @@all << self
-        self
+
       end
       def self.create(name)
           art=self.new(name)

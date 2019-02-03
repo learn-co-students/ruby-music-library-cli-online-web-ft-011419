@@ -4,7 +4,7 @@ attr_accessor :name, :songs, :artists
 extend Concerns::Findable
     def initialize(name=nil)
       @name = name
-      @@all << self
+      #@@all << self
       @songs=[]
     end
 
