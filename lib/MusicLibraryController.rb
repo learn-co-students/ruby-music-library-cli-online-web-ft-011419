@@ -36,8 +36,14 @@ end
       def list_songs_by_artist
         puts "Please enter the name of an artist:"
           input= gets.strip
+        s=Artist.find_by_name(input)
+          binding.pry
           end
-def list_songs_by_genre
+
+
+
+
+          def list_songs_by_genre
   puts"Please enter the name of a genre:"
   input= gets.strip
 end
