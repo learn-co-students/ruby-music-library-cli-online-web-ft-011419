@@ -30,8 +30,9 @@ extend Concerns::Findable
 
        @songs<< song unless @songs.include?(song)
         end
+        #creates a has many thru
         def genres
-          @songs.map(&:genre).uniq
+          @songs.map{|s| s.genre}.uniq
 
         end
 

@@ -33,24 +33,38 @@ end
           puts "#{i+1}. #{g.name}"
         end
     end
-      def list_songs_by_artist
+    def list_songs_by_artist
         puts "Please enter the name of an artist:"
           input= gets.strip
-        s=Artist.find_by_name(input)
-          binding.pry
+        if  file=Artist.find_by_name(input)
+          file.songs.sort_by(&:name).each_with_index do |artist,i|
+            puts "#{i+1}. #{artist.name} - #{artist.genre.name}"
           end
+      end
+    end
+        def list_songs_by_genre
+            puts"Please enter the name of a genre:"
+            input= gets.strip
+          if  file=Genre.find_by_name(input)
+            file.songs.sort_by(&:name).each_with_index do |g,i|
+                puts "#{i+1}. #{g.artist.name} - #{g.name}"
+            end
+          end
+        end
+        def play_song
+          puts "Which song number would you like to play?"
+          input= gets.strip.to_i
+          if (1..Song.all.length).include?(input)
+              song =Song.all.sort_by(&:name)[input-1]
+              puts "Playing #{song.name} by #{song.artist.name}" if song
 
+        end
+      end
 
-
-
-          def list_songs_by_genre
-  puts"Please enter the name of a genre:"
-  input= gets.strip
-end
-def play_song
-  puts "Which song number would you like to paly?"
-  input= gets.strip
-end
+      #case input
+      #when "list songs"
+      #  list_songs
+      #end
 
 
 end

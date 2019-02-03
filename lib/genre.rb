@@ -1,7 +1,8 @@
 class Genre
 attr_accessor :name, :songs, :artists
-@@all=[]
+
 extend Concerns::Findable
+@@all=[]
     def initialize(name=nil)
       @name = name
       #@@all << self
@@ -16,7 +17,7 @@ extend Concerns::Findable
       end
       def save
         @@all << self
-        self
+
       end
       def self.create(name)
           grn=self.new(name)
@@ -31,7 +32,7 @@ extend Concerns::Findable
        @songs<< song unless @songs.include?(song)
         end
         def artists
-          @songs.map(&:artist).uniq
+          @songs.map{|s| s.artist}.uniq
         end
 
 
